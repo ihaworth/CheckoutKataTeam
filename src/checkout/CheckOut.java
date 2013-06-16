@@ -1,15 +1,17 @@
 package checkout;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CheckOut
 {
-    private int total = 0;
-    private String rules;
+
     private RuleStore ruleStore;
+    private Map<String, Integer> itemsQuantity;
 
     public CheckOut(String rules)
     {
-        this.rules = rules;
-
+        itemsQuantity = new HashMap<String, Integer>();
         LineParser lineParser = new LineParser();
         RuleParser ruleParser = new RuleParser();
         RuleFactory ruleFactory = new RuleFactory();
@@ -24,11 +26,28 @@ public class CheckOut
 
     public void scan(String item)
     {
-        total = ruleStore.priceProduct(item);
+        incrementItemCount(item);
+    }
+
+    private void incrementItemCount(String item)
+    {
+        if(!itemsQuantity.containsKey(item)){
+            itemsQuantity.put(item, 0);
+        }
+        int currentCount = itemsQuantity.get(item);
+        itemsQuantity.put(item, currentCount + 1);
     }
 
     public int total()
     {
+        int total = 0;
+
+        for (String item : itemsQuantity.keySet()) {
+
+            int quantity = itemsQuantity.get(item);
+            total += ruleStore.priceProduct(item, quantity);
+
+        }
         return total;
     }
 }

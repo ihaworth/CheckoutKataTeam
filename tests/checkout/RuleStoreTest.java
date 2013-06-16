@@ -32,19 +32,19 @@ public class RuleStoreTest
     {
         ruleStore.ruleCreated(PRODUCT_A_NAME, productAPriceRule);
 
-        ruleStore.priceProduct(PRODUCT_A_NAME);
+        ruleStore.priceProduct(PRODUCT_A_NAME, 1);
 
-        verify(productAPriceRule).priceProduct(PRODUCT_A_NAME);
+        verify(productAPriceRule).priceProduct(PRODUCT_A_NAME, 1);
     }
 
     @Test
     public void productIsPricedIfRuleAvaliable()
     {
-        when(productAPriceRule.priceProduct(PRODUCT_A_NAME)).thenReturn(50);
+        when(productAPriceRule.priceProduct(PRODUCT_A_NAME, 1)).thenReturn(50);
 
         ruleStore.ruleCreated(PRODUCT_A_NAME, productAPriceRule);
 
-        assertThat(ruleStore.priceProduct(PRODUCT_A_NAME), equalTo(50));
+        assertThat(ruleStore.priceProduct(PRODUCT_A_NAME, 1), equalTo(50));
     }
 
     @Test
@@ -53,8 +53,8 @@ public class RuleStoreTest
         ruleStore.ruleCreated(PRODUCT_A_NAME, productAPriceRule);
         ruleStore.ruleCreated(PRODUCT_B_NAME, productBPriceRule);
 
-        ruleStore.priceProduct(PRODUCT_A_NAME);
+        ruleStore.priceProduct(PRODUCT_A_NAME, 1);
 
-        verify(productAPriceRule).priceProduct(PRODUCT_A_NAME);
+        verify(productAPriceRule).priceProduct(PRODUCT_A_NAME, 1);
     }
 }

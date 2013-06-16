@@ -12,7 +12,7 @@ public class PriceRuleTest
     {
         PriceRule priceRule = new PriceRule("A", 50);
 
-        assertThat(priceRule.priceProduct("A"), equalTo(50));
+        assertThat(priceRule.priceProduct("A", 1), equalTo(50));
     }
 
     @Test
@@ -20,6 +20,6 @@ public class PriceRuleTest
     {
         PriceRule priceRule = new PriceRule("B", 30);
 
-        assertThat(priceRule.priceProduct("B"), equalTo(30));
+        assertThat(priceRule.priceProduct("B", 1), equalTo(30));
     }
 }

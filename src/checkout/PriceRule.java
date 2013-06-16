@@ -9,9 +9,9 @@ public class PriceRule
         productPrice = price;
     }
 
-    public int priceProduct(String product)
+    public int priceProduct(String product, int quantity)
     {
-        return productPrice;
+        return productPrice * quantity;
     }
 
 

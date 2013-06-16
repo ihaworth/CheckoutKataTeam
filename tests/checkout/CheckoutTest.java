@@ -32,10 +32,10 @@ public class CheckoutTest
     {
         assertEquals(  0, price(""));
         assertEquals( 50, price("A"));
-        //        assertEquals( 80, price("AB"));
-        //        assertEquals(115, price("CDBA"));
-        //
-        //        assertEquals(100, price("AA"));
+        assertEquals( 80, price("AB"));
+        assertEquals(115, price("CDBA"));
+
+        assertEquals(100, price("AA"));
         //        assertEquals(130, price("AAA"));
         //        assertEquals(180, price("AAAA"));
         //        assertEquals(230, price("AAAAA"));

@@ -13,8 +13,8 @@ public class RuleStore implements RuleCreationListener
         ruleMap.put(product, priceRule);
     }
 
-    public int priceProduct(String product)
+    public int priceProduct(String product, int quantity)
     {
-        return ruleMap.get(product).priceProduct(product);
+        return ruleMap.get(product).priceProduct(product, quantity);
     }
 }
