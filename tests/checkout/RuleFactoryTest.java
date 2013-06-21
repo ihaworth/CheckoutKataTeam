@@ -5,21 +5,35 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class RuleFactoryTest
 {
 
+    private RuleCreationListener listener;
+    private RuleFactory ruleFactory;
+
+    @Before
+    public void setup()
+    {
+        listener = mock(RuleCreationListener.class);
+        ruleFactory = new RuleFactory();
+        ruleFactory.addListener(listener);
+    }
+
     @Test
     public void canCreateASimplePriceRule()
     {
-        RuleCreationListener listener = mock(RuleCreationListener.class);
-        RuleFactory ruleFactory = new RuleFactory();
-        ruleFactory.addListener(listener);
-
         ruleFactory.createPriceRule("Baked Beans", 50);
+        verify(listener).ruleCreated(eq("Baked Beans"), any(SinglePriceRule.class));
+    }
 
-        verify(listener).ruleCreated(eq("Baked Beans"), any(PriceRule.class));
+    @Test
+    public void canCreateASpecialOfferPriceRule()
+    {
+        ruleFactory.createPriceRule("Baked Beans", 50, 3, 30);
+        verify(listener).ruleCreated(eq("Baked Beans"), any(SpecialOfferPriceRule.class));
     }
 
 }

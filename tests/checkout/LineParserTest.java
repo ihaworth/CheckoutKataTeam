@@ -22,7 +22,7 @@ public class LineParserTest
     @Test
     public void aOneLineFileParsesOneLine()
     {
-        lineParser.parse("One line");
+        lineParser.parse("One line\n");
 
         verify(listener).lineParsed("One line");
     }

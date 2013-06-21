@@ -5,12 +5,12 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class PriceRuleTest
+public class SinglePriceRuleTest
 {
     @Test
     public void pricesAProduct()
     {
-        PriceRule priceRule = new PriceRule("A", 50);
+        PriceRule priceRule = new SinglePriceRule("A", 50);
 
         assertThat(priceRule.priceProduct("A", 1), equalTo(50));
     }
@@ -18,7 +18,7 @@ public class PriceRuleTest
     @Test
     public void pricesAnotherProduct()
     {
-        PriceRule priceRule = new PriceRule("B", 30);
+        PriceRule priceRule = new SinglePriceRule("B", 30);
 
         assertThat(priceRule.priceProduct("B", 1), equalTo(30));
     }

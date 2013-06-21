@@ -1,19 +1,8 @@
 package checkout;
 
-public class PriceRule
+public interface PriceRule
 {
-    final int productPrice;
 
-    public PriceRule(String product, int price)
-    {
-        productPrice = price;
-    }
-
-    public int priceProduct(String product, int quantity)
-    {
-        return productPrice * quantity;
-    }
-
-
+    public abstract int priceProduct(String product, int quantity);
 
 }

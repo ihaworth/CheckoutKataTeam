@@ -21,6 +21,17 @@ final class RuleParser implements LineListener
 
         String product = ruleParts[0];
         int price = Integer.parseInt(ruleParts[1]);
-        ruleListener.ruleParsed(product, price);
+
+        if(ruleParts.length > 2) {
+            String specialOffer = ruleParts[2];
+            String[] ruleParts2 = specialOffer.split(" for ");
+
+            int quantity = Integer.parseInt(ruleParts2[0]);
+            int discountedPrice = Integer.parseInt(ruleParts2[1]);
+
+            ruleListener.ruleParsed(product, price, quantity, discountedPrice);
+        }else {
+            ruleListener.ruleParsed(product, price);
+        }
     }
 }

@@ -16,15 +16,15 @@ public class RuleStoreTest
 
     RuleStore ruleStore;
 
-    private PriceRule productAPriceRule;
-    private PriceRule productBPriceRule;
+    private SinglePriceRule productAPriceRule;
+    private SinglePriceRule productBPriceRule;
 
     @Before
     public void setup()
     {
         ruleStore = new RuleStore();
-        productAPriceRule = mock(PriceRule.class);
-        productBPriceRule = mock(PriceRule.class);
+        productAPriceRule = mock(SinglePriceRule.class);
+        productBPriceRule = mock(SinglePriceRule.class);
     }
 
     @Test

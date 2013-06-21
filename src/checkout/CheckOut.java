@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class CheckOut
 {
-
     private RuleStore ruleStore;
     private Map<String, Integer> itemsQuantity;
 
@@ -31,10 +30,12 @@ public class CheckOut
 
     private void incrementItemCount(String item)
     {
-        if(!itemsQuantity.containsKey(item)){
+        if (!itemsQuantity.containsKey(item)){
             itemsQuantity.put(item, 0);
         }
+
         int currentCount = itemsQuantity.get(item);
+
         itemsQuantity.put(item, currentCount + 1);
     }
 
@@ -46,8 +47,8 @@ public class CheckOut
 
             int quantity = itemsQuantity.get(item);
             total += ruleStore.priceProduct(item, quantity);
-
         }
+
         return total;
     }
 }

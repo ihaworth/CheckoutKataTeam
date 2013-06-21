@@ -33,4 +33,12 @@ public class RuleParserTest
 
         verify(listener).ruleParsed("B", 30);
     }
+
+    @Test
+    public void canParseAMultiBuyRule()
+    {
+        ruleParser.parse("A\t50\t3 for 130");
+
+        verify(listener).ruleParsed("A", 50, 3, 130);
+    }
 }
