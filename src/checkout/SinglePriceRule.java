@@ -4,14 +4,13 @@ public class SinglePriceRule implements PriceRule
 {
     final int productPrice;
 
-    public SinglePriceRule(String product, int price)
+    public SinglePriceRule(int price)
     {
         productPrice = price;
     }
 
-
     @Override
-    public int priceProduct(String product, int quantity)
+    public int priceProduct(int quantity)
     {
         return productPrice * quantity;
     }

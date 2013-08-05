@@ -15,6 +15,6 @@ public class RuleStore implements RuleCreationListener
 
     public int priceProduct(String product, int quantity)
     {
-        return ruleMap.get(product).priceProduct(product, quantity);
+        return ruleMap.get(product).priceProduct(quantity);
     }
 }

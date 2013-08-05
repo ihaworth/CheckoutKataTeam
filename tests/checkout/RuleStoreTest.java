@@ -34,13 +34,13 @@ public class RuleStoreTest
 
         ruleStore.priceProduct(PRODUCT_A_NAME, 1);
 
-        verify(productAPriceRule).priceProduct(PRODUCT_A_NAME, 1);
+        verify(productAPriceRule).priceProduct(1);
     }
 
     @Test
     public void productIsPricedIfRuleAvaliable()
     {
-        when(productAPriceRule.priceProduct(PRODUCT_A_NAME, 1)).thenReturn(50);
+        when(productAPriceRule.priceProduct(1)).thenReturn(50);
 
         ruleStore.ruleCreated(PRODUCT_A_NAME, productAPriceRule);
 
@@ -55,6 +55,6 @@ public class RuleStoreTest
 
         ruleStore.priceProduct(PRODUCT_A_NAME, 1);
 
-        verify(productAPriceRule).priceProduct(PRODUCT_A_NAME, 1);
+        verify(productAPriceRule).priceProduct(1);
     }
 }

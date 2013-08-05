@@ -23,12 +23,12 @@ public class RuleFactory implements RuleListener
 
     public void createPriceRule(String product, int price)
     {
-        listener.ruleCreated(product, new SinglePriceRule(product, price));
+        listener.ruleCreated(product, new SinglePriceRule(price));
     }
 
     public void createPriceRule(String product, int price, int quantity, int discountedPrice)
     {
-        listener.ruleCreated(product, new SpecialOfferPriceRule(product, price, quantity, discountedPrice));
+        listener.ruleCreated(product, new SpecialOfferPriceRule(price, quantity, discountedPrice));
     }
 
 
